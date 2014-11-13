@@ -1,44 +1,31 @@
 import random
-
+tie = "You played the same thing.  TIE!"
 win = "You win!"
-tie = "Tie! Try again!"
 lose = "You lose!"
 
-user = raw_input("R, P, or S?---> ")
-
-choices = ['Rock', 'Paper', 'Scissors']
-computer = random.choice(choices)
-
-if user == "R" or "r":
-	print "You play rock!"
-elif user == "P" or "p":
-	print "You play paper!"
-elif user == "S" or "s":
-	print "You play Scissors!"
-else:
-	print "What the heck did you pick? Pick a valid option, please!"
-
-print "The computer plays %s" % computer
+player1 = raw_input("Pick one of (r, p, s):... ")
 
 
-if (computer == 'Rock' and user == "R"):
-	print tie
-if (computer == 'Rock' and user == "P"):
-	print win
-if (computer == 'Rock' and user == "S"):
-	print lose
+computer_answers = ['r', 'p', 's']
+cpu = random.choice(computer_answers)
+print "You play %s and the computer plays %s" % (player1, cpu)
 
-if (computer == 'Paper' and user == "R"):
-	print lose
-if (computer == 'Paper' and user == "P"):
-	print tie
-if (computer == 'Paper' and user == "S"):
-	print win
+def rps(player1, cpu):
+	if player1 == cpu:
+		print tie
+	elif player1 == 'r' and cpu == 'p':
+		print lose
+	elif player1 == 'r' and cpu == 's':
+		print win
+	elif player1 == 's' and cpu == 'r':
+		print lose
+	elif player1 == 's' and cpu == 'p':
+		print win
+	elif player1 == 'p' and cpu == 'r':
+		print win
+	elif player1 == 'p' and cpu == 's':
+		print lose
+	else:
+		print "Something went wrong, start over to play again!"
 
-
-if (computer == 'Scissors'  and user == "R"):
-	print win
-if (computer == 'Scissors'  and user == "P"):
-	print lose
-if (computer == 'Scissors'  and user == "S"):
-	print tie
+rps(player1, cpu)
